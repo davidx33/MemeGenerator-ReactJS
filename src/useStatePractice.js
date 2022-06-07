@@ -8,7 +8,7 @@ function useStatePractice() {
     }
 
     function sub() {
-        setCount(count - 1)
+        setCount(prevCount => prevCount - 1)
     }
   return (
     <div className="counter">
@@ -21,4 +21,4 @@ function useStatePractice() {
   )
 }
 
-export default useStatePractice
+export default useStatePractice  
