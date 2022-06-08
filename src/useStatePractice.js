@@ -157,3 +157,89 @@ function toggleFavorite() {
         }
     })
 }
+
+
+
+// import React from "react"
+
+// export default function Box(props) {
+//     const [on, setOn] = React.useState(props.on)
+//     /**
+//      * Challenge: Create state controlling whether
+//      * this box is "on" or "off". Use the incoming
+//      * `props.on` to determine the initial state.
+//      * 
+//      * Create an event listener so when the box is clicked,
+//      * it toggles from "on" to "off".
+//      * 
+//      * Goal: clicking each box should toggle it on and off.
+//      */
+//     const styles = {
+//         backgroundColor: on ? "#222222" : "transparent"
+//     }
+    
+//     function toggle() {
+//         setOn(prevOn => !prevOn)
+//     }
+    
+//     return (
+//         <div style={styles} className="box"></div>
+//     )
+
+
+
+import React from "react"
+import boxes from "./boxes"
+import Box from "./Box"
+
+export default function App() {
+    const [squares, setSquares] = React.useState(boxes)
+    
+    function toggle(id) {
+        setSquares(prevSquares => {
+            return prevSquares.map((square) => {
+                return square.id === id ? {...square, on: !square.on} : square
+            })
+        })
+    }
+    
+    const squareElements = squares.map(square => (
+        <Box 
+            key={square.id} 
+            id={square.id}
+            on={square.on} 
+            toggle={toggle}
+        />
+    ))
+    
+    return (
+        <main>
+            {squareElements}
+        </main>
+    )
+}
+
+
+// import React from "react"
+
+// export default function App() {
+//     const [messages, setMessages] = React.useState(["a"])
+//     /**
+//      * Challenge:
+//      * - If there are no unread messages, display "You're all caught up!"
+//      * - If there are > 0 unread messages, display "You have <n> unread
+//      *   message(s)"
+//      *      - If there's exactly 1 unread message, it should read "message"
+//      *        (singular)
+//      */
+//     return (
+//         <div>
+//             {
+//                 messages.length === 0 ?
+//                 <h1>You're all caught up!</h1> :
+//                 <h1>You have {messages.length} unread 
+//                 {messages.length > 1 ? "messages" : "message"}</h1>
+//             }
+//         </div>
+//     )
+// }
