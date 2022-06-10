@@ -24,6 +24,7 @@ export default function App() {
     )
 }
 
+// testing if graph will work
 
 // 1. What is a "side effect" in React? What are some examples?
 // - Any code that affects an outside system.
